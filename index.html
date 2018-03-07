@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/master.css">
+    <link rel="stylesheet" href="assets/css/page.css">
+
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
+  </head>
+  <body>
+
+  <!-- LOGIN -->
+  <section data-win="login" class="fc ">
+    <div class="animation"></div>
+
+    <h1>Se connecter</h1>
+    <div class="identification fc">
+      <label for="pseudo">Pseudo :</label>
+      <input data-login="pseudo" type="text" name="Pseudo" value="">
+      <label for="password">password :</label>
+      <input data-login="password" type="password" name="password" value="">
+      <input data-login="submit" type="button" name="submit" value="Envoyer">
+    </div>
+
+    <div class="redirectRegister">
+      <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
+    </div>
+
+    <div class="gestionErreur hidden"></div>
+
+  </section>
+
+<!-- REGISTER -->
+<section data-win="register" class="hidden">
+  <div class="animation"></div>
+
+
+  <h1>S'enregistrer</h1>
+  <div class="register fc">
+    <label for="pseudo">Pseudo :</label>
+    <input data-register="pseudo" type="text" name="Pseudo" value="" placeholder="Saisir votre pseudo">
+    <label for="password">password :</label>
+    <input data-register="password" type="password" name="password" value="" placeholder="Saisir votre mot de passe">
+    <label for="email">Email :</label>
+    <input data-register="email" type="text" name="email" value="">
+
+    <input data-login="submit" type="button" name="submit" value="Envoyer">
+  </div>
+
+  <div class="gestionErreur hidden"></div>
+
+
+</section>
+
+
+
+
+
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script>require('./renderer.js')</script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+
+</html>

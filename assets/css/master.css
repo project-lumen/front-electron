@@ -1,0 +1,100 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+.fc {
+  display: flex;
+  flex-direction: column;
+}
+.fr {
+  display: flex;
+  flex-direction: row;
+}
+.hidden {
+  display: none;
+}
+
+/****************
+* SECTION LOGIN *
+*****************/
+section[data-win="login"], section[data-win="register"]{
+  width: 100vw;
+  height: 100vh;
+  background-color: papayawhip;
+  justify-content: center;
+  align-items: center;
+}
+section[data-win="login"] > h1, section[data-win="register"] > h1 {
+  font-size: 24px;
+  font-weight: 200;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+section[data-win="login"] > .gestionErreur, section[data-win="register"] > .gestionErreur {
+  font-size: 13px;
+  background-color: lightcoral;
+  width: 200px;
+  opacity: 0.8;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 8px;
+
+}
+
+.identification, .register{
+  width: 100%;
+  height: 60vh;
+  align-items: center;
+}
+.identification > input[type="button"], .register > input[type="button"]{
+  margin-top: 5px;
+}
+
+.identification > label, .register > label  {
+  padding: 5px;
+}
+.redirectRegister {
+  margin-top: 30px;
+}
+
+.redirectRegister p {
+  font-size: 13px;
+}
+.redirectRegister a{
+  color: red;
+  text-decoration: none;
+}
+
+section[data-win="login"] .animation {
+  background-image: url('../img/gif/login.gif');
+
+}
+
+/*******************
+* SECTION REGISTER *
+********************/
+
+section[data-win="register"] {
+  background-color: lightblue;
+}
+
+section[data-win="register"] input {
+  width: 150px;
+}
+
+section[data-win="register"] input[type="button"] {
+  width: 80px;
+}
+
+.animation{
+  background-size: cover;
+  width: 100vw;
+  height: 40vh;
+}
+
+section[data-win="register"] .animation {
+  background-image: url('../img/gif/register.gif');
+
+}
