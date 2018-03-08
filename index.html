@@ -19,44 +19,99 @@
   <section data-win="login" class="fc ">
     <div class="animation"></div>
 
-    <h1>Se connecter</h1>
-    <div class="identification fc">
-      <label for="pseudo">Pseudo :</label>
-      <input data-login="pseudo" type="text" name="Pseudo" value="">
-      <label for="password">password :</label>
-      <input data-login="password" type="password" name="password" value="">
-      <input data-login="submit" type="button" name="submit" value="Envoyer">
-    </div>
-
-    <div class="redirectRegister">
-      <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
-    </div>
+    <div class="content">
+      <h1>Se connecter</h1>
+      <div class="identification fc">
+        <label for="pseudo">Pseudo :</label>
+        <input data-login="pseudo" type="text" name="Pseudo" value="">
+        <label for="password">password :</label>
+        <input data-login="password" type="password" name="password" value="">
+        <input data-login="submit" type="button" name="submit" value="Envoyer">
+      </div>
+      <div class="redirectRegister">
+        <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
+      </div>
+  </div>
 
     <div class="gestionErreur hidden"></div>
-
   </section>
 
 <!-- REGISTER -->
-<section data-win="register" class="hidden">
-  <div class="animation"></div>
+  <section data-win="register" class="hidden">
+    <div class="animation"></div>
+
+    <div class="content">
+      <h1>S'enregistrer</h1>
+      <div class="register fc">
+        <label for="pseudo">Pseudo :</label>
+        <input data-register="pseudo" type="text" name="Pseudo" value="" placeholder="Saisir votre pseudo">
+        <label for="password">password :</label>
+        <input data-register="password" type="password" name="password" value="" placeholder="Saisir votre mot de passe">
+        <label for="email">Email :</label>
+        <input data-register="email" type="text" name="email" value="" placeholder="Saisir votre adresse email">
+        <input data-login="submit" type="button" name="submit" value="Envoyer">
+      </div>
+      <div class="redirectLogin">
+        <p>Vous avez deja un compte ? c'est par <a id="btnLogin" href="#">ici</a> :)</p>
+      </div>
+    </div>
+
+    <div class="gestionErreur hidden"></div>
+  </section>
+
+  <!-- MAIN APP -->
+  <section data-win="main" class="hidden">
+    <div class="content_main">
+
+      <div class="importantGroup">
+        <h2>Important</h2>
+        <div class="contentGroup">
+          <p>
+            <span>Faire les courses</span>
+            <span> Liste Maison - date de fin : 01/01/2019</span>
+            <input type="checkbox" name="" value="">
+          </p>
+
+          <p>
+            <span>Finir l'application</span>
+            <input type="checkbox" name="" value="">
+          </p>
+
+          <p>
+            <span>Faire un joli CSS</span>
+            <input type="checkbox" name="" value="">
+          </p>
+
+          <p>
+            <span>Acheter a l'avenir des petites canettes de redbull ! </span>
+            <input type="checkbox" name="" value="">
+          </p>
+
+        </div>
+      </div>
 
 
-  <h1>S'enregistrer</h1>
-  <div class="register fc">
-    <label for="pseudo">Pseudo :</label>
-    <input data-register="pseudo" type="text" name="Pseudo" value="" placeholder="Saisir votre pseudo">
-    <label for="password">password :</label>
-    <input data-register="password" type="password" name="password" value="" placeholder="Saisir votre mot de passe">
-    <label for="email">Email :</label>
-    <input data-register="email" type="text" name="email" value="">
+      <div class="todayGroup">
+        <h2>Today</h2>
+        <div class="contentGroup">
+          <p> Tache A </p>
+        </div>
+      </div>
 
-    <input data-login="submit" type="button" name="submit" value="Envoyer">
-  </div>
+      <div class="expsoonGroup">
+        <h2>Expire soon</h2>
+        <div class="contentGroup">
+          <p> Tache A </p>
+          <p> Tache A </p>
+          <p> Tache A </p>
+        </div>
+      </div>
 
-  <div class="gestionErreur hidden"></div>
+    </div>
 
 
-</section>
+
+  </section>
 
 
 

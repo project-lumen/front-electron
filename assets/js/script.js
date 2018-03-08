@@ -1,5 +1,38 @@
 $(document).ready(function() {
 
+
+  if (localStorage.getItem('api_token')) {
+    var current_tokken = localStorage.getItem('api_token');
+    var url_verif = 'http://192.168.33.10/user/'+ current_tokken;
+    $.ajax({
+          // on lui donne l'url concaténé
+          url: url_verif,
+          type: 'GET',
+          data:'api_token='+current_tokken,
+          dataType : 'html'
+        }).done(function(data) {
+          var resultRqt = JSON.parse(data)
+          debugger;
+          if (resultRqt.success) {
+            debugger;
+            $("[data-win='login']").toggleClass('fc hidden');
+            $("[data-win='main']").toggleClass('hidden fc');
+          }else{
+            debugger
+            return resultRqt.success
+          }
+
+        })
+
+
+
+
+
+    $("#iden").addClass('hidden');
+    $("#admin").removeClass('hidden');
+  }
+
+
     /********************
     *   SECTION LOGIN   *
     *********************/
@@ -15,6 +48,8 @@ $(document).ready(function() {
             // on lui donne l'url concaténé
             url: url_login,
             type: 'POST',
+
+            // A MODIFIER USERNAME > PSEUDO
             data:'username='+user+'&password='+pass,
             dataType : 'html'
             }).done(function(data) {
@@ -41,18 +76,22 @@ $(document).ready(function() {
             $("#error").addClass('hidden');
 
             var token_user = JSON.parse(data)
-            debugger;
+            ;
             localStorage.setItem('api_token', token_user.api_token);
-              debugger;
             }});
         });
 
+        // Nous redirige vers la page register
         $('body').on('click', '#btnRegister', function() {
           $("[data-win='register']").toggleClass('fc hidden');
           $("[data-win='login']").toggleClass('hidden fc');
-
         })
-
+        // Nous redirige vers la page login
+        /* a tester : saisie du form save entre chaque redirection*/
+        $('body').on('click', '#btnLogin', function() {
+          $("[data-win='register']").toggleClass('hidden fc');
+          $("[data-win='login']").toggleClass('fc hidden');
+        })
 
 
 
