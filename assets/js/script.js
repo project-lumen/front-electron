@@ -48,9 +48,7 @@ $(document).ready(function() {
             // on lui donne l'url concaténé
             url: url_login,
             type: 'POST',
-
-            // A MODIFIER USERNAME > PSEUDO
-            data:'username='+user+'&password='+pass,
+            data:'pseudo='+user+'&password='+pass,
             dataType : 'html'
             }).done(function(data) {
 
