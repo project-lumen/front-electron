@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/page.css">
 
 
+    <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat" rel="stylesheet">
 
 
 
@@ -27,6 +28,9 @@
         <label for="password">password :</label>
         <input data-login="password" type="password" name="password" value="">
         <input data-login="submit" type="button" name="submit" value="Envoyer">
+        <label for="remember">remember :</label>
+
+        <input id="isRememberCheck" type="checkbox" name="remember" value="remember">
       </div>
       <div class="redirectRegister">
         <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
@@ -49,7 +53,7 @@
         <input data-register="password" type="password" name="password" value="" placeholder="Saisir votre mot de passe">
         <label for="email">Email :</label>
         <input data-register="email" type="text" name="email" value="" placeholder="Saisir votre adresse email">
-        <input data-login="submit" type="button" name="submit" value="Envoyer">
+        <input data-register="submit" type="button" name="submit" value="Envoyer">
       </div>
       <div class="redirectLogin">
         <p>Vous avez deja un compte ? c'est par <a id="btnLogin" href="#">ici</a> :)</p>
@@ -68,7 +72,6 @@
         <div class="contentGroup">
           <p>
             <span>Faire les courses</span>
-            <span> Liste Maison - date de fin : 01/01/2019</span>
             <input type="checkbox" name="" value="">
           </p>
 
@@ -110,6 +113,41 @@
     </div>
 
 
+    <div class="sideM closed">
+      <div class="btnSide"></div>
+
+      <div class="content_menu fc">
+        <div class="textimg nospeak"></div>
+        <div class="pictureUsers">
+          <h6>jeremie sophikitis</h6>
+        </div>
+        <div class="codeUser">
+          <span>F7r5D</span>
+        </div>
+
+
+        <div class="userList">
+
+        </div>
+      </div>
+
+
+
+      <div class="setup"></div>
+        <div class="userConfig configClose">
+          <div class="header">
+            <div class="iconBack">
+
+            </div>
+          </div>
+          <div class="content_userConfig">
+
+          </div>
+
+
+        </div>
+      </div>
+
 
   </section>
 
@@ -121,5 +159,8 @@
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script>require('./renderer.js')</script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/sideMenu.js"></script>
+    <script type="text/javascript" src="assets/js/sideConfigUser.js"></script>
+    <script type="text/javascript" src="assets/js/features.js"></script>
 
 </html>
