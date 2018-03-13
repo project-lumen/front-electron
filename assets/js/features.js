@@ -11,16 +11,12 @@ $(document).ready(function() {
     var code = $('.codeUser span').val();
      document.execCommand('copy');
      $(".textimg").toggleClass('nospeak speak');
-
-
      window.setTimeout(function() {
-         
+         $(".textimg").fadeTo(500, 0).slideUp(500, function(){
 
              $(".textimg").toggleClass('nospeak speak');
-
+         });
      }, 4000);
-
-
   });
 
 

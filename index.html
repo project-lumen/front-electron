@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -111,47 +113,51 @@
       </div>
 
     </div>
-
-
-    <div class="sideM closed">
-      <div class="btnSide"></div>
-
-      <div class="content_menu fc">
-        <div class="textimg nospeak"></div>
-        <div class="pictureUsers">
-          <h6>jeremie sophikitis</h6>
-        </div>
-        <div class="codeUser">
-          <span>F7r5D</span>
-        </div>
-
-
-        <div class="userList">
-
-        </div>
-      </div>
-
-
-
-      <div class="setup"></div>
-        <div class="userConfig configClose">
-          <div class="header">
-            <div class="iconBack">
-
-            </div>
-          </div>
-          <div class="content_userConfig">
-
-          </div>
-
-
-        </div>
-      </div>
-
-
   </section>
 
 
+<!-- MENU DASHBOARD SIDE -->
+<section data-win='menuSide'class="hidden">
+  <div class="sideM closed">
+    <div class="btnSide"></div>
+    <div class="content_menu fc">
+      <div class="textimg nospeak"><!--JS --></div>
+      <div class="pictureUsers">
+        <h6>UNKNOW</h6> <!-- Par  default -->
+      </div>
+      <div class="codeUser"><!-- REMPLI PAR JS --></div>
+      <div class="userList">
+        <div class="contentList">
+      </div>
+      <div class="Addnew formClosed">
+        <div class="header">
+          <span> ADD LIST </span>
+        </div>
+      <div class="form">
+        <label for="newlist">Nom de liste :</label>
+          <input data-newlist="name" type="text" name="newlist" value="" placeholder="Saisir la nouvelle liste">
+          <input data-newlist="submit" type="button" name="submit" value="Envoyer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- OPTION -->
+    <div class="setup"></div>
+      <div class="userConfig configClose">
+        <div class="header">
+          <h6> option </h6>
+          <div class="iconBack">
+          </div>
+        </div>
+        <div class="content_userConfig">
+          <button class="btn_logOut" type="button" name="btn_logOut"><span>Log out </span></button>
+        </div>
+      </div>
+    </div>
+
+</section>
 
 
 
@@ -162,5 +168,7 @@
     <script type="text/javascript" src="assets/js/sideMenu.js"></script>
     <script type="text/javascript" src="assets/js/sideConfigUser.js"></script>
     <script type="text/javascript" src="assets/js/features.js"></script>
+
+
 
 </html>

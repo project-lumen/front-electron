@@ -13,13 +13,13 @@ $(document).ready(function() {
 
   })
 
-// /* si on on clic en dehors du menu lateral on ferme celui ci */
-//   $('body').on('click','.content_main', function() {
-//
-//     $(".sideM").removeClass('open'); // force remove class
-//     $(".sideM").addClass('closed'); // force addClass
-//     $(".btnSide").css({"opacity":""});
-//   })
+  $('body').on('click', '.iconBack', function() {
+
+      $(".userConfig").toggleClass('configClose configOpen'); // Switch entre les deux class
+
+  })
+
+
 
 
 

@@ -12,7 +12,10 @@ $(document).ready(function() {
       $(".sideM").toggleClass('closed open'); // Switch entre les deux class
       $(".btnSide").css({"opacity":"1"});
 
+      if ($(".userConfig").hasClass('configOpen')) {
 
+        $(".userConfig").toggleClass('configClose configOpen'); // Switch entre les deux class
+      }
   })
 
 /* si on on clic en dehors du menu lateral on ferme celui ci */
@@ -21,7 +24,19 @@ $(document).ready(function() {
     $(".sideM").removeClass('open'); // force remove class
     $(".sideM").addClass('closed'); // force addClass
     $(".btnSide").css({"opacity":""});
+
   })
+
+
+
+  // ADD LIST
+
+  $('body').on('click', '.Addnew > .header', function() {
+
+      $(".Addnew").toggleClass('formOpen formClosed'); // Switch entre les deux class
+
+  })
+
 
 
 

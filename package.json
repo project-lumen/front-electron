@@ -20,6 +20,7 @@
     "electron": "~1.8.2"
   },
   "dependencies": {
+    "clipboard": "^2.0.0",
     "jquery": "^3.3.1"
   }
 }

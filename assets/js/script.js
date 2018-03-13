@@ -4,9 +4,8 @@ verif();
 redirectLogin();
 redirectRegister();
 autoCompleteRemember();
-showUserList();
 infoCurrentUser()
-
+showUserList();
 
 
     /********************
@@ -44,6 +43,7 @@ infoCurrentUser()
 
             var verification = JSON.parse(data)
             // si aucune correspondance de nom d'utilisateur dans la BDD
+            debugger;
             if (verification.error) {
               var render_error = '<span id="msgError">'+verification.error+'</span>';
               $(".gestionErreur").removeClass('hidden');
@@ -60,6 +60,9 @@ infoCurrentUser()
             localStorage.setItem('api_token', token_user.api_token);
 
             verif();
+            infoCurrentUser()
+            showUserList();
+
             }});
         });
 
@@ -106,10 +109,70 @@ infoCurrentUser()
 
 
             /********************
-            *   OWN USER LIST   *
+            *     ADD LIST      *
             *********************/
 
+            // event listenner sur le bouton envoyer
+            $('body').on('click', '[data-newlist="submit"]', function() {
+              // Récupere la valeur saisie et la sauvegarde dans des variables
+              var newlist = $('[data-newlist="name"]').val();
+              var current_tokken = localStorage.getItem('api_token');
+              var url_addList = 'http://192.168.33.10/myList/addList'
+              $.ajax({
+                    // on lui donne l'url concaténé
+                    url: url_addList,
+                    type: 'POST',
+                    data:'nameList='+newlist+'&api_token='+current_tokken,
+                    dataType : 'html'
+                  }).done(function(data) {
 
+                    var traitement = JSON.parse(data)
+
+                    if (traitement.success) {
+                      showUserList();
+
+                    }else{
+                      debugger;
+                      console.log('erreur')
+                    }
+
+
+                  })
+                  })
+
+
+          /********************
+          *     LOG OUT       *
+          *********************/
+
+    // event listenner sur le bouton logout
+    $('body').on('click', '.btn_logOut', function() {
+
+      var current_tokken = localStorage.getItem('api_token');
+      var url_logout = 'http://192.168.33.10/users/logout'
+      $.ajax({
+            // on lui donne l'url concaténé
+            url: url_logout,
+            type: 'POST',
+            data:'api_token='+current_tokken,
+            dataType : 'html'
+          }).done(function(data) {
+
+            var traitement = JSON.parse(data)
+
+            if (traitement.success) {
+              localStorage.removeItem('id');
+
+              var data = "deco"
+              verif(data);
+              // clearLogOut();
+            }else{
+              console.log('erreur')
+            }
+
+
+          })
+          })
 
 
 
@@ -138,7 +201,7 @@ function redirectLogin(){
 
 /* verification de l'api token du localStorage avec celle de la bdd
 si correspondance on affiche la fenetre main */
-function verif(){
+function verif(x){
   if (localStorage.getItem('api_token')) {
     var current_tokken = localStorage.getItem('api_token');
     var url_verif = 'http://192.168.33.10/user/'+ current_tokken;
@@ -150,15 +213,19 @@ function verif(){
           dataType : 'html'
         }).done(function(data) {
           var resultRqt = JSON.parse(data)
-          debugger;
+          debugger
           if (resultRqt.success) {
-            debugger;
             $("[data-win='login']").toggleClass('fc hidden');
             $("[data-win='main']").toggleClass('hidden fc');
+            $("[data-win='menuSide']").toggleClass('hidden fc');
+          }else if (x === "deco") {
+            $("[data-win='login']").toggleClass('fc hidden');
+            $("[data-win='main']").toggleClass('hidden fc');
+            clearLogOut()
           }else{
-            debugger
-            return resultRqt.success
+            console.log("erreur");
           }
+
 
         })
     };
@@ -187,6 +254,7 @@ function showUserList(){
 if (localStorage.getItem('api_token')) {
   var current_tokken = localStorage.getItem('api_token');
   var url_ownList = 'http://192.168.33.10/ownList';
+  debugger
   $.ajax({
         // on lui donne l'url concaténé
         url: url_ownList,
@@ -194,23 +262,28 @@ if (localStorage.getItem('api_token')) {
         data:'api_token='+current_tokken,
         dataType : 'html'
       }).done(function(data) {
-
         var traitement = JSON.parse(data)
-        var renderOwnList = "<ul>"
+        if(traitement.success === "valide"){
 
+          var renderOwnList = "<ul>"
+          $.each(traitement, function(i,item){
 
-        $.each(traitement, function(i,item){
-          renderOwnList += "<li>" + item.name + "</li>"
-        });
+            if(item.valueOf(this) === "valide"){
+              console.log(); // FAIRE PROPRE
+            }else {
+              renderOwnList += '<li data-tokenList="'+item.tokenList+'">'+ item.name + '</li>'
+            }
 
-        renderOwnList += "</ul>"
+          });
 
-        $('.userList').html(renderOwnList);
-
-
+          renderOwnList += "</ul>"
+          $('.contentList').html(renderOwnList);
+        }else{
+          console.log('hello') // FAIRE PROPRE
+        }
       })
+    }
   }
-}
 
 
 
@@ -246,3 +319,20 @@ function infoCurrentUser(){
 
 
 }
+
+  // Referme toutes les slides et permet a la reconnection de se retrouver
+  // sur la page d'accueil
+  function clearLogOut(){
+    if ($(".userConfig").hasClass('configOpen')) {
+      $(".userConfig").toggleClass('configClose configOpen');
+    }
+    if ($("[data-win='menuSide']").hasClass('fc')) {
+      $("[data-win='menuSide']").toggleClass('hidden fc');
+    }
+    if ($(".sideM").hasClass('open')) {
+      $(".sideM").toggleClass('open closed');
+    }
+
+
+
+          }
