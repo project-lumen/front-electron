@@ -129,6 +129,7 @@ showUserList();
                     var traitement = JSON.parse(data)
 
                     if (traitement.success) {
+                      debugger;
                       showUserList();
 
                     }else{
@@ -165,7 +166,6 @@ showUserList();
 
               var data = "deco"
               verif(data);
-              // clearLogOut();
             }else{
               console.log('erreur')
             }
@@ -173,6 +173,59 @@ showUserList();
 
           })
           })
+
+
+
+          /********************
+          * RETURN DATA LIST  *
+          *********************/
+
+          $('body').on('click', '.contentList ul li', function() {
+            var current_tokken = localStorage.getItem('api_token');
+            var tokenList = $(this).data('tokenlist');
+            debugger
+
+            var url_logout = 'http://192.168.33.10/myList/printList'
+            $.ajax({
+                  // on lui donne l'url concaténé
+                  url: url_logout,
+                  type: 'POST',
+                  data:'api_token='+current_tokken+'&tokenList='+tokenList,
+                  dataType : 'html'
+                }).done(function(data) {
+                  debugger
+                  var traitement = JSON.parse(data)
+                  var name = "<h6>" + traitement.nameList + "</h6>"
+
+                  var task = "<ul>"
+                  for (var i = 0; i < traitement.task.length; i++) {
+                    task += '<li>'+ traitement.task[i].titleTask+'<span><input type="checkbox" name="check"></span></li>'
+                  }
+                  task += "</ul>"
+
+
+                  // PUSH
+                  $('.headerList').html(name);
+                  $('.content_List > .task').html(task);
+
+                  $("[data-win='main']").toggleClass('fc hidden');
+                  $("[data-win='selectList']").toggleClass('fc hidden');
+                  $(".sideM").toggleClass('open closed');
+
+
+
+
+
+
+
+
+
+
+
+                })
+                })
+
+
 
 
 
@@ -219,9 +272,12 @@ function verif(x){
             $("[data-win='main']").toggleClass('hidden fc');
             $("[data-win='menuSide']").toggleClass('hidden fc');
           }else if (x === "deco") {
-            $("[data-win='login']").toggleClass('fc hidden');
-            $("[data-win='main']").toggleClass('hidden fc');
-            clearLogOut()
+            // *** REMPLACER PAR LOCATION.RELOAD ***
+            // == SI TOUT MARCHE BIEN A SUPPR
+            // $("[data-win='login']").toggleClass('fc hidden');
+            // $("[data-win='main']").toggleClass('hidden fc');
+            // // clearLogOut()
+            location.reload();
           }else{
             console.log("erreur");
           }
@@ -262,6 +318,7 @@ if (localStorage.getItem('api_token')) {
         data:'api_token='+current_tokken,
         dataType : 'html'
       }).done(function(data) {
+        debugger
         var traitement = JSON.parse(data)
         if(traitement.success === "valide"){
 
@@ -319,20 +376,19 @@ function infoCurrentUser(){
 
 
 }
-
+  // REMPLACER PAR LOCATION.RELOAD
+  // a supprimer si on s'en sert plus
+  // ==============================
   // Referme toutes les slides et permet a la reconnection de se retrouver
   // sur la page d'accueil
-  function clearLogOut(){
-    if ($(".userConfig").hasClass('configOpen')) {
-      $(".userConfig").toggleClass('configClose configOpen');
-    }
-    if ($("[data-win='menuSide']").hasClass('fc')) {
-      $("[data-win='menuSide']").toggleClass('hidden fc');
-    }
-    if ($(".sideM").hasClass('open')) {
-      $(".sideM").toggleClass('open closed');
-    }
-
-
-
-          }
+  // function clearLogOut(){
+  //   if ($(".userConfig").hasClass('configOpen')) {
+  //     $(".userConfig").toggleClass('configClose configOpen');
+  //   }
+  //   if ($("[data-win='menuSide']").hasClass('fc')) {
+  //     $("[data-win='menuSide']").toggleClass('hidden fc');
+  //   }
+  //   if ($(".sideM").hasClass('open')) {
+  //     $(".sideM").toggleClass('open closed');
+  //   }
+  // }
