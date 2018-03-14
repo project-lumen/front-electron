@@ -25,7 +25,7 @@ showUserList();
        * check : sauvegarde des saisies utilisateur
        * uncheck : Aucune sauvegarde et supprime les anciennes saisies */
       if ($('#isRememberCheck').is(':checked')){
-        debugger
+
         localStorage.setItem('id', user);
         localStorage.setItem('pwd', pass);
       }else {
@@ -46,7 +46,7 @@ showUserList();
 
             var verification = JSON.parse(data)
             // si aucune correspondance de nom d'utilisateur dans la BDD
-            debugger;
+            ;
             if (!verification.success) {
               var render_error = '<span id="msgError">'+verification.message+'</span>';
               $(".gestionErreur").removeClass('hidden');
@@ -132,11 +132,11 @@ showUserList();
                     var traitement = JSON.parse(data)
 
                     if (traitement.success) {
-                      debugger;
+                      ;
                       showUserList();
 
                     }else{
-                      debugger;
+                      ;
                       console.log('erreur')
                     }
 
@@ -197,7 +197,7 @@ showUserList();
                   data:'api_token='+current_tokken+'&tokenList='+tokenList,
                   dataType : 'html'
                 }).done(function(data) {
-                  debugger
+
                   var traitement = JSON.parse(data)
                   var name = traitement.nameList
                   var task = "<ul>"
@@ -232,7 +232,7 @@ showUserList();
             var startD = $('[data-newTask="startdate"]').val();
             var endD = $('[data-newTask="endDate"]').val();
 
-            debugger
+
 
             var url_addtask = 'http://192.168.33.10/myList/addTask'
             $.ajax({// on lui donne l'url concaténé
@@ -244,7 +244,7 @@ showUserList();
             }).done(function(data) {
 
               var traitement = JSON.parse(data)
-              debugger
+
               if (traitement.success) {
 
                 updateTask()
@@ -264,7 +264,7 @@ showUserList();
               var current_tokken = localStorage.getItem('api_token');
               var id = this.dataset.idtask;
               var check = $(this).prop('checked');
-              debugger;
+              ;
               var url_checkTask = 'http://192.168.33.10/myList/checkTask'
               $.ajax({
                 url: url_checkTask,
@@ -273,44 +273,18 @@ showUserList();
                 dataType : 'html'
               }).done(function(data) {
                 var traitement = JSON.parse(data)
-                debugger;
+                ;
 
               if (traitement.success) {
-                debugger;
+                ;
 
-                // updateTask()
-                // updateTaskArchive()
+                updateTask()
+                updateTaskArchive()
               }
             })
           })
 
-        //   /********************
-        //   * Check task on archive
-        //   * Sur la sidebard > archives
-        //   * remet une liste terminé en place
-        //   *****************************************/
-        //
-        //   $('body').on('click', '.content_List .task ul li span input[type="checkbox"]', function() {
-        //
-        //     var current_tokken = localStorage.getItem('api_token');
-        //     var id = this.dataset.idtask;
-        //     var check = $(this).prop('checked');
-        //     var url_checkTask = 'http://192.168.33.10/myList/checkTask'
-        //     $.ajax({
-        //       url: url_checkTask,
-        //       type: 'POST',
-        //       data:'api_token='+current_tokken+'&idTask='+id+'&check='+check+'&tokenList='+currentTokenList,
-        //       dataType : 'html'
-        //     }).done(function(data) {
-        //       var traitement = JSON.parse(data)
-        //
-        //     if (traitement.success) {
-        //
-        //       updateTask()
-        //       updateTaskArchive()
-        //     }
-        //   })
-        // })
+
 
 
 
@@ -337,7 +311,7 @@ showUserList();
               dataType : 'html'
             }).done(function(data) {
               var traitement = JSON.parse(data)
-               debugger
+
               if (traitement.success) {
                 var renderER = '<p>' + traitement.message + '</p>'
                 $('.msg_errors').html(renderER);
@@ -407,7 +381,7 @@ function verif(x){
           dataType : 'html'
         }).done(function(data) {
           var resultRqt = JSON.parse(data)
-          debugger
+
           if (resultRqt.success) {
             $("[data-win='login']").toggleClass('fc hidden');
             $("[data-win='main']").toggleClass('hidden fc');
@@ -438,7 +412,7 @@ function autoCompleteRemember(){
     $('[data-login="pseudo"]').val(localStorage.getItem('id'));
     $('[data-login="password"]').val(localStorage.getItem('pwd'));
     $('#isRememberCheck').attr('checked', true)
-    debugger
+
   }
 }
 
@@ -451,7 +425,7 @@ function showUserList(){
 if (localStorage.getItem('api_token')) {
   var current_tokken = localStorage.getItem('api_token');
   var url_ownList = 'http://192.168.33.10/ownList';
-  debugger
+  
   $.ajax({
         // on lui donne l'url concaténé
         url: url_ownList,
@@ -459,7 +433,7 @@ if (localStorage.getItem('api_token')) {
         data:'api_token='+current_tokken,
         dataType : 'html'
       }).done(function(data) {
-        debugger
+
         var traitement = JSON.parse(data)
         if(traitement.success === "valide"){
 
@@ -519,7 +493,7 @@ function infoCurrentUser(){
 function updateTask(){
   var current_tokken = localStorage.getItem('api_token');
   var tokenList = currentTokenList
-  debugger
+
 
   var url_returnlist = 'http://192.168.33.10/myList/printList'
   $.ajax({
@@ -529,11 +503,11 @@ function updateTask(){
         data:'api_token='+current_tokken+'&tokenList='+tokenList,
         dataType : 'html'
       }).done(function(data) {
-        debugger
+
 
         var traitement = JSON.parse(data)
 
-        debugger;
+        ;
         var name = "<h6>" + traitement.nameList + "</h6>"
         var task = "<ul>"
         for (var i = 0; i < traitement.task.length; i++) {
@@ -553,7 +527,7 @@ function updateTask(){
 function updateTaskArchive(){
   var current_tokken = localStorage.getItem('api_token');
   var tokenList = currentTokenList
-  debugger
+
 
   var url_returnlist = 'http://192.168.33.10/myList/printList'
   $.ajax({
@@ -563,11 +537,11 @@ function updateTaskArchive(){
         data:'api_token='+current_tokken+'&tokenList='+tokenList,
         dataType : 'html'
       }).done(function(data) {
-        debugger
+
 
         var traitement = JSON.parse(data)
 
-        debugger;
+        ;
 
         var task = "<ul>"
         for (var i = 0; i < traitement.task.length; i++) {
