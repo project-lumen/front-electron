@@ -531,6 +531,15 @@ section[data-win="selectList"] {
   word-spacing: 1px;
 }
 
+.iconDots{
+  background-image: url(../img/icons/3dots.png);
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  right: 20px;
+  background-size: contain;
+}
+
 
 .content_List {
   width: 100%;
@@ -641,4 +650,121 @@ section[data-win="selectList"] {
 
 .footerList label {
     margin: 5px;
+}
+
+
+/*********************
+*   RIGHT SIDEBAR    *
+**********************/
+
+.contentSideRight{
+  height: 100vh;
+    width: 310px;
+    top: 0;
+    position: absolute;
+    background: whitesmoke;
+    right: 0;
+    transition: right 1s;
+}
+
+.addUsers{
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  height: 110px
+}
+
+.title{
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    align-items: center;
+    background-color: #5f5f5f;
+
+}
+
+
+.title h6 {
+  color: white;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.formAddUser{
+  height: 75px;
+   width: 290px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   padding: 0 10px;
+
+}
+.formAddUser input[type="text"]{
+  width: 130px;
+
+}
+.archiveList{
+  height: 380px
+}
+.archiveListContent{
+  padding: 10px;
+}
+.contentArchive{
+  background: #5f5f5f;
+    border: 4px solid #c3c3c3;
+    overflow: scroll;
+    max-height: 315px;
+height: 315px;
+}
+.contentArchive ul {
+  list-style: none;
+    padding: 4px;
+    color: white;
+}
+.contentArchive li {
+  cursor: pointer;
+    padding: 5px;
+    height: 30px;
+    text-transform: capitalize;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    font-family: montserrat;
+    transition: background-color 1s;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -2px 0 rgba(0, 0, 0, 0.05), inset 0px -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+.optionList{
+  height: 75px;
+}
+
+.contentOptionList{
+  justify-content: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.optionList span {
+  background-color: rgb(239, 79, 79);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+
+.open_SBR{
+  right: 0px;
+  transition: right 1s;
+
+}
+
+.closed_SBR{
+  right: -310px;
+  transition: right 1s;
+
 }
