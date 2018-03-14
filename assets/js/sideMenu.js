@@ -61,6 +61,22 @@ $('body').on('click','.content_List', function() {
 })
 
 
+$('body').on('click','.btnHome', function() {
+
+  if ($("[data-win='main']").hasClass('hidden')) {
+
+    $("[data-win='main']").toggleClass('fc hidden');
+    $("[data-win='selectList']").toggleClass('fc hidden');
+    $(".sideM").toggleClass('open closed');
+
+  }
+
+
+})
+
+
+
+
 
 
 
