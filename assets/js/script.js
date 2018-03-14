@@ -213,8 +213,13 @@ showUserList();
                   $('.headerList > h6').html(name);
                   $('.content_List > .task').html(task);
 
-                  $("[data-win='main']").toggleClass('fc hidden');
-                  $("[data-win='selectList']").toggleClass('fc hidden');
+                  if ($("[data-win='main']").hasClass('fc')) {
+
+                    $("[data-win='main']").toggleClass('fc hidden');
+                    $("[data-win='selectList']").toggleClass('fc hidden');
+                  }
+
+
                   $(".sideM").toggleClass('open closed');
                   $("[data-win='sideRight']").toggleClass('fc hidden');
                 })
@@ -425,7 +430,7 @@ function showUserList(){
 if (localStorage.getItem('api_token')) {
   var current_tokken = localStorage.getItem('api_token');
   var url_ownList = 'http://192.168.33.10/ownList';
-  
+
   $.ajax({
         // on lui donne l'url concaténé
         url: url_ownList,
@@ -480,10 +485,10 @@ function infoCurrentUser(){
           var traitement = JSON.parse(data);
 
           var renderName = '<h6>'+ traitement.name + '</h6>'
-          var renderCode = '<span>' + traitement.code + '</span>'
+          var renderCode = traitement.code
 
           $('.pictureUsers').html(renderName);
-          $('.codeUser').html(renderCode);
+          $('.codeUser span').html(renderCode);
 
 
         })
