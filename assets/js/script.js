@@ -1,3 +1,5 @@
+var currentTokenList
+
 $(document).ready(function() {
 
 verif();
@@ -6,6 +8,7 @@ redirectRegister();
 autoCompleteRemember();
 infoCurrentUser()
 showUserList();
+
 
 
     /********************
@@ -183,23 +186,25 @@ showUserList();
           $('body').on('click', '.contentList ul li', function() {
             var current_tokken = localStorage.getItem('api_token');
             var tokenList = $(this).data('tokenlist');
-            debugger
+            currentTokenList = $(this).data('tokenlist');
 
-            var url_logout = 'http://192.168.33.10/myList/printList'
+
+            var url_returnlist = 'http://192.168.33.10/myList/printList'
             $.ajax({
                   // on lui donne l'url concaténé
-                  url: url_logout,
+                  url: url_returnlist,
                   type: 'POST',
                   data:'api_token='+current_tokken+'&tokenList='+tokenList,
                   dataType : 'html'
                 }).done(function(data) {
                   debugger
                   var traitement = JSON.parse(data)
-                  var name = "<h6>" + traitement.nameList + "</h6>"
 
+                  debugger;
+                  var name = "<h6>" + traitement.nameList + "</h6>"
                   var task = "<ul>"
                   for (var i = 0; i < traitement.task.length; i++) {
-                    task += '<li>'+ traitement.task[i].titleTask+'<span><input type="checkbox" name="check"></span></li>'
+                    task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
                   }
                   task += "</ul>"
 
@@ -211,19 +216,42 @@ showUserList();
                   $("[data-win='main']").toggleClass('fc hidden');
                   $("[data-win='selectList']").toggleClass('fc hidden');
                   $(".sideM").toggleClass('open closed');
-
-
-
-
-
-
-
-
-
-
-
                 })
                 })
+
+          /********************
+          *     ADD TASK      *
+          *********************/
+
+
+          $('body').on('click', '[data-newtask="submit"]', function() {
+            var current_tokken = localStorage.getItem('api_token');
+            var nameTask = $('[data-newTask="name"]').val();
+            var important = $('[data-newTask="important"]').prop('checked');
+            var startD = $('[data-newTask="startdate"]').val();
+            var endD = $('[data-newTask="endDate"]').val();
+
+            debugger
+
+            var url_addtask = 'http://192.168.33.10/myList/addTask'
+            $.ajax({// on lui donne l'url concaténé
+            url: url_addtask,
+            type: 'POST',
+            data:'api_token='+current_tokken+'&tokenList='+currentTokenList+'&titleTask='+nameTask
+            +'&flag='+important+'&dateStart='+startD+'&dateEnd='+endD,
+            dataType : 'html'
+            }).done(function(data) {
+
+              var traitement = JSON.parse(data)
+              debugger
+              if (traitement.success) {
+
+                updateTask()
+              }
+            })
+          })
+
+
 
 
 
@@ -373,9 +401,41 @@ function infoCurrentUser(){
 
         })
     }
+}
 
+function updateTask(){
+  var current_tokken = localStorage.getItem('api_token');
+  var tokenList = currentTokenList
+  debugger
+
+  var url_returnlist = 'http://192.168.33.10/myList/printList'
+  $.ajax({
+        // on lui donne l'url concaténé
+        url: url_returnlist,
+        type: 'POST',
+        data:'api_token='+current_tokken+'&tokenList='+tokenList,
+        dataType : 'html'
+      }).done(function(data) {
+        debugger
+
+        var traitement = JSON.parse(data)
+
+        debugger;
+        var name = "<h6>" + traitement.nameList + "</h6>"
+        var task = "<ul>"
+        for (var i = 0; i < traitement.task.length; i++) {
+          task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+        }
+        task += "</ul>"
+
+        // PUSH
+        $('.headerList').html(name);
+        $('.content_List > .task').html(task);
+      })
 
 }
+
+
   // REMPLACER PAR LOCATION.RELOAD
   // a supprimer si on s'en sert plus
   // ==============================
