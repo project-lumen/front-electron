@@ -47,8 +47,8 @@ showUserList();
             var verification = JSON.parse(data)
             // si aucune correspondance de nom d'utilisateur dans la BDD
             debugger;
-            if (verification.error) {
-              var render_error = '<span id="msgError">'+verification.error+'</span>';
+            if (!verification.success) {
+              var render_error = '<span id="msgError">'+verification.message+'</span>';
               $(".gestionErreur").removeClass('hidden');
               $('.gestionErreur').html(render_error);
               window.setTimeout(function() {
@@ -199,7 +199,7 @@ showUserList();
                 }).done(function(data) {
                   debugger
                   var traitement = JSON.parse(data)
-                  var name = "<h6>" + traitement.nameList + "</h6>"
+                  var name = traitement.nameList
                   var task = "<ul>"
                   for (var i = 0; i < traitement.task.length; i++) {
                     if (!traitement.task[i].check) {
@@ -208,14 +208,15 @@ showUserList();
                   }
                   task += "</ul>"
 
-
+                  updateTaskArchive()
                   // PUSH
-                  $('.headerList').html(name);
+                  $('.headerList > h6').html(name);
                   $('.content_List > .task').html(task);
 
                   $("[data-win='main']").toggleClass('fc hidden');
                   $("[data-win='selectList']").toggleClass('fc hidden');
                   $(".sideM").toggleClass('open closed');
+                  $("[data-win='sideRight']").toggleClass('fc hidden');
                 })
                 })
 
@@ -253,19 +254,17 @@ showUserList();
 
 
             /********************
-            *Check task on List *
-            *********************/
+            * Check task on List
+            * Sur la fenetre de la liste selectionné
+            * Supprime une tache terminer
+            *****************************************/
 
-            $('body').on('click', '.content_List .task ul li span input[type="checkbox"]', function() {
+            $('body').on('click', '.content_List .task ul li span input[type="checkbox"], .contentArchive input[type="checkbox"]', function() {
 
               var current_tokken = localStorage.getItem('api_token');
               var id = this.dataset.idtask;
               var check = $(this).prop('checked');
-
-
-
-
-
+              debugger;
               var url_checkTask = 'http://192.168.33.10/myList/checkTask'
               $.ajax({
                 url: url_checkTask,
@@ -274,15 +273,96 @@ showUserList();
                 dataType : 'html'
               }).done(function(data) {
                 var traitement = JSON.parse(data)
+                debugger;
 
               if (traitement.success) {
-                updateTask()
+                debugger;
+
+                // updateTask()
+                // updateTaskArchive()
+              }
+            })
+          })
+
+        //   /********************
+        //   * Check task on archive
+        //   * Sur la sidebard > archives
+        //   * remet une liste terminé en place
+        //   *****************************************/
+        //
+        //   $('body').on('click', '.content_List .task ul li span input[type="checkbox"]', function() {
+        //
+        //     var current_tokken = localStorage.getItem('api_token');
+        //     var id = this.dataset.idtask;
+        //     var check = $(this).prop('checked');
+        //     var url_checkTask = 'http://192.168.33.10/myList/checkTask'
+        //     $.ajax({
+        //       url: url_checkTask,
+        //       type: 'POST',
+        //       data:'api_token='+current_tokken+'&idTask='+id+'&check='+check+'&tokenList='+currentTokenList,
+        //       dataType : 'html'
+        //     }).done(function(data) {
+        //       var traitement = JSON.parse(data)
+        //
+        //     if (traitement.success) {
+        //
+        //       updateTask()
+        //       updateTaskArchive()
+        //     }
+        //   })
+        // })
+
+
+
+
+
+
+
+          /********************
+          * ADD COLABORATEUR
+          * Sur le sidebar Right
+          * Ajoute un utilisateur via son codeUser
+          *****************************************/
+          $('body').on('click', '[data-add="submit"]', function() {
+            var current_tokken = localStorage.getItem('api_token');
+            var codeUser = $('[data-add="code"]').val();
+            var tokenList = currentTokenList
+
+
+            var url_addUser = 'http://192.168.33.10/myList/addUser'
+            $.ajax({
+              url: url_addUser,
+              type: 'POST',
+              data:'api_token='+current_tokken+'&codeUser='+codeUser+'&tokenList='+tokenList,
+              dataType : 'html'
+            }).done(function(data) {
+              var traitement = JSON.parse(data)
+               debugger
+              if (traitement.success) {
+                var renderER = '<p>' + traitement.message + '</p>'
+                $('.msg_errors').html(renderER);
+
+                window.setTimeout(function() {
+                    $(".msg_errors").fadeTo(500, 0).slideUp(500, function(){
+                        $(this).remove();
+
+                    });
+                }, 4000);
+
+              }else{
+                var renderER = '<p>' + traitement.message + '</p>'
+                $('.msg_errors').html(renderER);
+
+                window.setTimeout(function() {
+                    $(".msg_errors p").fadeTo(500, 0).slideUp(500, function(){
+                        $(this).remove();
+
+                    });
+                }, 4000);
               }
 
-
-              })
-
-              })
+            })
+        })
 
 
 
@@ -464,8 +544,42 @@ function updateTask(){
         task += "</ul>"
 
         // PUSH
-        $('.headerList').html(name);
+        $('.headerList > h6').html(name);
         $('.content_List > .task').html(task);
+      })
+
+}
+
+function updateTaskArchive(){
+  var current_tokken = localStorage.getItem('api_token');
+  var tokenList = currentTokenList
+  debugger
+
+  var url_returnlist = 'http://192.168.33.10/myList/printList'
+  $.ajax({
+        // on lui donne l'url concaténé
+        url: url_returnlist,
+        type: 'POST',
+        data:'api_token='+current_tokken+'&tokenList='+tokenList,
+        dataType : 'html'
+      }).done(function(data) {
+        debugger
+
+        var traitement = JSON.parse(data)
+
+        debugger;
+
+        var task = "<ul>"
+        for (var i = 0; i < traitement.task.length; i++) {
+          if (traitement.task[i].check) {
+
+            task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check" checked></span></li>'
+          }
+        }
+        task += "</ul>"
+
+        // PUSH
+        $('.contentArchive').html(task);
       })
 
 }
