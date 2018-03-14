@@ -521,6 +521,7 @@ section[data-win="selectList"] {
   justify-content: center;
   align-items: center;
   height: 50px;
+  text-align: center;
 }
 
 .headerList > h6 {
@@ -529,6 +530,7 @@ section[data-win="selectList"] {
   font-weight: 400;
   letter-spacing: 5px;
   word-spacing: 1px;
+  margin: 0px 55px;
 }
 
 .iconDots{
@@ -695,7 +697,7 @@ section[data-win="selectList"] {
   height: 75px;
    width: 290px;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    justify-content: space-around;
    align-items: center;
    padding: 0 10px;
@@ -766,5 +768,15 @@ height: 315px;
 .closed_SBR{
   right: -310px;
   transition: right 1s;
+
+}
+.msg_errors {
+  text-align: center;
+  background: lightgreen;
+  border-radius: 9px;
+}
+.msg_errors p {
+  padding: 5px;
+
 
 }
