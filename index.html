@@ -30,9 +30,11 @@
         <label for="password">password :</label>
         <input data-login="password" type="password" name="password" value="">
         <input data-login="submit" type="button" name="submit" value="Envoyer">
-        <label for="remember">remember :</label>
+        <div class="boxRemember">
+          <label for="remember">remember :</label>
+          <input id="isRememberCheck" type="checkbox" name="remember" value="remember">
+        </div>
 
-        <input id="isRememberCheck" type="checkbox" name="remember" value="remember">
       </div>
       <div class="redirectRegister">
         <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
