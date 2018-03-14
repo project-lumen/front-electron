@@ -21,6 +21,16 @@ $(document).ready(function() {
 
 
 
+  // ADD TASK //
+
+  $('body').on('click', '.header_addTaske', function() {
+
+      $(".footerList").toggleClass('openAddTask closeAddTask'); // Switch entre les deux class
+
+  })
+
+
+
 
 
 
