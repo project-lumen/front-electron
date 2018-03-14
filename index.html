@@ -133,13 +133,41 @@
     </div>
 
   </div>
-  <div class="footerList">
+  <div class="footerList closeAddTask">
     <div class="addTask">
-      <div class="header_addTaske">
+      <div class="header_addTaske ">
         <h6> ADD NEW TASK </h6>
       </div>
       <div class="formAddTask">
 
+          <label for="nameTask">Nom de la tache :</label>
+          <input data-newTask="name" type="text" name="nameTask" value="" placeholder="Saisir une nouvelle tache">
+
+          <div class="checkboxImportant">
+            <label for="important">Important :</label>
+            <input data-newTask="important" type="checkbox" name="important" value="" placeholder="">
+          </div>
+
+
+
+        <div class="blockDate">
+          <div class="block1 fc">
+            <label for="startdate">Date de debut :</label>
+            <input data-newTask="startdate" type="date" name="startdate" value="" placeholder="">
+          </div>
+
+          <div class="block2 fc">
+            <label for="endDate">Date de fin :</label>
+            <input data-newTask="endDate" type="date" name="endDate" value="" placeholder="">
+          </div>
+
+
+        </div>
+
+
+
+
+        <input data-newTask="submit" type="button" name="submit" value="Envoyer">
       </div>
     </div>
   </div>
