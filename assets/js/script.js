@@ -8,6 +8,7 @@ redirectRegister();
 autoCompleteRemember();
 infoCurrentUser()
 showUserList();
+displayTaskMain()
 
 
 
@@ -253,6 +254,8 @@ showUserList();
               if (traitement.success) {
 
                 updateTask()
+                displayTaskMain()
+
               }
             })
           })
@@ -562,6 +565,94 @@ function updateTaskArchive(){
       })
 
 }
+
+  // FUNCTION HOME IMPORTANT / TODAY / EXP soon
+  function displayTaskMain(){
+    displayImportantTask();
+    displayTodayTask()
+    displayExpTask()
+  }
+
+
+  function displayImportantTask(){
+    var current_tokken = localStorage.getItem('api_token');
+
+    var url_returnImp = 'http://192.168.33.10/myList/impTask'
+    debugger
+    $.ajax({
+          // on lui donne l'url concaténé
+          url: url_returnImp,
+          type: 'POST',
+          data:'api_token='+current_tokken,
+          dataType : 'html'
+        }).done(function(data) {
+           debugger
+
+          var traitement = JSON.parse(data)
+          var renderImportant = ""
+          for (var i = 0; i < traitement.length; i++) {
+            debugger
+            renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
+          }
+          debugger
+          $('.importantGroup > .contentGroup').html(renderImportant);
+        })
+  }
+
+  function displayTodayTask(){
+    var current_tokken = localStorage.getItem('api_token');
+
+    var url_returnImp = 'http://192.168.33.10/myList/todTask'
+    debugger
+    $.ajax({
+          // on lui donne l'url concaténé
+          url: url_returnImp,
+          type: 'POST',
+          data:'api_token='+current_tokken,
+          dataType : 'html'
+        }).done(function(data) {
+           debugger
+
+          var traitement = JSON.parse(data)
+          var renderImportant = ""
+          for (var i = 0; i < traitement.length; i++) {
+            debugger
+            renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
+          }
+          debugger
+          $('.todayGroup > .contentGroup').html(renderImportant);
+        })
+  }
+
+  function displayExpTask(){
+    var current_tokken = localStorage.getItem('api_token');
+
+    var url_returnImp = 'http://192.168.33.10/myList/expTask'
+    debugger
+    $.ajax({
+          // on lui donne l'url concaténé
+          url: url_returnImp,
+          type: 'POST',
+          data:'api_token='+current_tokken,
+          dataType : 'html'
+        }).done(function(data) {
+           debugger
+
+          var traitement = JSON.parse(data)
+          var renderImportant = ""
+          for (var i = 0; i < traitement.length; i++) {
+            debugger
+            renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
+          }
+          debugger
+          $('.expsoonGroup > .contentGroup').html(renderImportant);
+        })
+  }
+
+
+
+
+
 
 
   // REMPLACER PAR LOCATION.RELOAD
