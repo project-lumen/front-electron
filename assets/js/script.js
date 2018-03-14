@@ -199,12 +199,12 @@ showUserList();
                 }).done(function(data) {
                   debugger
                   var traitement = JSON.parse(data)
-
-                  debugger;
                   var name = "<h6>" + traitement.nameList + "</h6>"
                   var task = "<ul>"
                   for (var i = 0; i < traitement.task.length; i++) {
-                    task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+                    if (!traitement.task[i].check) {
+                      task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+                    }
                   }
                   task += "</ul>"
 
@@ -250,6 +250,39 @@ showUserList();
               }
             })
           })
+
+
+            /********************
+            *Check task on List *
+            *********************/
+
+            $('body').on('click', '.content_List .task ul li span input[type="checkbox"]', function() {
+
+              var current_tokken = localStorage.getItem('api_token');
+              var id = this.dataset.idtask;
+              var check = $(this).prop('checked');
+
+
+
+
+
+              var url_checkTask = 'http://192.168.33.10/myList/checkTask'
+              $.ajax({
+                url: url_checkTask,
+                type: 'POST',
+                data:'api_token='+current_tokken+'&idTask='+id+'&check='+check+'&tokenList='+currentTokenList,
+                dataType : 'html'
+              }).done(function(data) {
+                var traitement = JSON.parse(data)
+
+              if (traitement.success) {
+                updateTask()
+              }
+
+
+              })
+
+              })
 
 
 
@@ -424,7 +457,9 @@ function updateTask(){
         var name = "<h6>" + traitement.nameList + "</h6>"
         var task = "<ul>"
         for (var i = 0; i < traitement.task.length; i++) {
-          task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+          if (!traitement.task[i].check) {
+            task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+          }
         }
         task += "</ul>"
 
