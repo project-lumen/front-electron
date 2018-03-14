@@ -530,17 +530,11 @@ section[data-win="selectList"] {
   letter-spacing: 5px;
   word-spacing: 1px;
 }
-.footerList{
-  height: 25px;
-  padding: 5px;
-  display: flex;
-  background-color: indianred;
-  justify-content: center;
-  }
+
 
 .content_List {
   width: 100%;
-  height: 525px;
+  height: 550px;
   background-color: rgba(255, 255, 255, 0.21);
   overflow: scroll;
 }
@@ -570,11 +564,15 @@ section[data-win="selectList"] {
 }
 
 .footerList {
-  height: 25px;
+  bottom: -20px;
+  position: absolute;
   padding: 5px;
   display: flex;
   background-color: rgba(255, 255, 255, 0.31);
   justify-content: center;
+  /* width: 100%; */
+  transition: height 1s;
+  width: 340px;
 }
 
 .footerList h6 {
@@ -583,4 +581,64 @@ section[data-win="selectList"] {
     font-weight: 400;
     letter-spacing: 5px;
     word-spacing: 1px;
+}
+
+.header_addTaske {
+  height: 45px;
+  text-align: center;
+
+}
+
+
+.formAddTask {
+  /* width: 50%; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.openAddTask{
+  height: 300px;
+}
+
+.closeAddTask{
+  height: 45px;
+}
+.task {
+  min-height: 515px;
+}
+
+.blockDate{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.formAddTask input[type="text"] {
+  width: 270px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.formAddTask input[type="date"]{
+  border-radius: 10px;
+      padding: 5px;
+      width: 120px;
+}
+
+.addTask {
+  width: 100%
+}
+
+.checkboxImportant {
+  display: flex;
+  align-items: center;
+}
+
+.footerList label {
+    margin: 5px;
 }
