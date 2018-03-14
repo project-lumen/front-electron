@@ -206,7 +206,16 @@ section[data-win="main"] {
 /*******************
 *     SIDE MENU    *
 ********************/
-
+.btnHome{
+  background-image: url(../img/icons/home.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  position: absolute;
+  height: 26px;
+  right: 10px;
+  top: 10px;
+}
 .sideM{
 height: 100vh;
 width: 310px;
@@ -287,15 +296,39 @@ transition: opacity 1s;
   cursor: pointer;
 }
 
-.codeUser > span {
-  user-select: none; /* Standard */
-  background: #ecc19c;
+/* .codeUser > span {
+  user-select: none;
   padding: 5px;
   margin-top: 5px;
   width: 100px;
   text-align: center;
   border-radius: 50px;
+} */
+
+.contentCodeUSer{
+  display: flex;
+  border-radius: 30px;
+  width: 155px;
+  background-color: #ecc19C;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 2px chocolate;
 }
+
+.contentCodeUSer p {
+  background-color: #EF9D56;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 5px;
+}
+
+.contentCodeUSer span {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+
+
 
 .setup{
   background-image: url('../img/icons/3dots64x.png');
@@ -735,6 +768,7 @@ height: 315px;
     align-items: center;
     font-family: montserrat;
     transition: background-color 1s;
+    justify-content: space-between;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -2px 0 rgba(0, 0, 0, 0.05), inset 0px -1px 0 rgba(0, 0, 0, 0.05);
 }
 
