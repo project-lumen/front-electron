@@ -38,6 +38,30 @@ $(document).ready(function() {
   })
 
 
+// SIDEBAR RIGHT
+
+
+$('body').on('click','.iconDots', function() {
+
+  $(".contentSideRight").toggleClass('open_SBR closed_SBR'); // Switch entre les deux class
+
+
+})
+
+
+$('body').on('click','.content_List', function() {
+
+
+  if ($(".contentSideRight").hasClass('open_SBR')) {
+
+    $(".contentSideRight").toggleClass('open_SBR closed_SBR'); // Switch entre les deux class
+  }
+
+
+})
+
+
+
 
 
 
