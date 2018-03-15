@@ -220,9 +220,14 @@ displayTaskMain()
                     $("[data-win='selectList']").toggleClass('fc hidden');
                   }
 
+                  if ($("[data-win='sideRight']").hasClass('hidden')) {
+
+                    $("[data-win='sideRight']").toggleClass('fc hidden');
+                  }
+
 
                   $(".sideM").toggleClass('open closed');
-                  $("[data-win='sideRight']").toggleClass('fc hidden');
+
                 })
                 })
 
@@ -347,6 +352,10 @@ displayTaskMain()
             })
         })
 
+        // Bouton refresh
+        $('body').on('click','.btnRefresh', function() {
+          showUserList()
+        })
 
 
 
