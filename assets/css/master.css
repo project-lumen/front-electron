@@ -733,11 +733,11 @@ section[data-win="selectList"] {
 *   RIGHT SIDEBAR    *
 **********************/
 
-.contentSideRight{
+.contentSideRight,.contentSideRightTask {
   height: 100vh;
     width: 310px;
     top: 0;
-    position: absolute;
+    position: fixed;
     background: whitesmoke;
     right: 0;
     transition: right 1s;
@@ -834,13 +834,13 @@ height: 315px;
 }
 
 
-.open_SBR{
+.open_SBR,.open_SBRT {
   right: 0px;
   transition: right 1s;
 
 }
 
-.closed_SBR{
+.closed_SBR, .closed_SBRT{
   right: -310px;
   transition: right 1s;
 
@@ -854,4 +854,32 @@ height: 315px;
   padding: 5px;
 
 
+}
+
+
+/* SIDEBAR UPDATE TASK */
+
+.UpdateTask{
+  height: 100%
+}
+
+.formUpdateTask {
+  height: 100%;
+  width: 100%;
+}
+
+.formUpdateTask .form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blockDateUpdate {
+display: flex;
+flex-direction: row;
+padding: 10px;
+justify-content: space-around;
+width: 290px;
 }
