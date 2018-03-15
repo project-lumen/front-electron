@@ -5,6 +5,7 @@ body{
 
 * {
   font-family: 'Quicksand', sans-serif;
+  outline: none;
 }
 .fc {
   display: flex;
@@ -190,7 +191,13 @@ section[data-win="register"] .animation {
    -moz-box-shadow: inset 0px -19px 20px -9px rgba(0,0,0,0.18);
    box-shadow: inset 0px -19px 20px -18px rgba(0,0,0,0.18);
    height: 10%;
+   font-weight: 400;
+   text-transform: uppercase;
+   color: white;
+   letter-spacing: 4px;
 }
+
+
 
 section[data-win="main"] {
   background-image: url('../img/jpg/main.jpg');
@@ -619,14 +626,22 @@ section[data-win="selectList"] {
 
 .content_List {
   width: 100%;
-  height: 550px;
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.21);
   overflow: scroll;
 }
 .task ul {
   list-style: none;
+  height: 100%;
+  overflow: scroll;
   /* padding: 4px; */
 }
+
+.task ul li > p {
+  width: 100%;
+  padding: 10px 0;
+}
+
 
 .task ul > li {
   display: flex;
@@ -656,7 +671,7 @@ section[data-win="selectList"] {
   background-color: rgba(255, 255, 255, 0.31);
   justify-content: center;
   /* width: 100%; */
-  transition: height 1s;
+  transition: height 1s, background 1s, color 1s;
   width: 340px;
 }
 
@@ -686,13 +701,16 @@ section[data-win="selectList"] {
 
 .openAddTask{
   height: 300px;
+  background-color: rgba(0, 0, 0, 0.42);
+  color: white;
+  transition: height 1s, background 1s, color 1s;
 }
 
 .closeAddTask{
   height: 45px;
 }
 .task {
-  min-height: 515px;
+  height: 515px;
 }
 
 .blockDate{
