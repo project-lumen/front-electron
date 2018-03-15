@@ -288,6 +288,7 @@ displayTaskMain()
 
                 updateTask()
                 updateTaskArchive()
+                displayTaskMain()
               }
             })
           })
@@ -345,10 +346,6 @@ displayTaskMain()
 
             })
         })
-
-
-
-
 
 
 
@@ -591,9 +588,10 @@ function updateTaskArchive(){
           var traitement = JSON.parse(data)
           var renderImportant = ""
           for (var i = 0; i < traitement.length; i++) {
-
+            if (!traitement[i].check) {
             renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
           }
+        }
 
           $('.importantGroup > .contentGroup').html(renderImportant);
         })
@@ -616,10 +614,10 @@ function updateTaskArchive(){
           var traitement = JSON.parse(data)
           var renderImportant = ""
           for (var i = 0; i < traitement.length; i++) {
-
+            if (!traitement[i].check) {
             renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
           }
-
+        }
           $('.todayGroup > .contentGroup').html(renderImportant);
         })
   }
@@ -641,13 +639,15 @@ function updateTaskArchive(){
           var traitement = JSON.parse(data)
           var renderImportant = ""
           for (var i = 0; i < traitement.length; i++) {
-
+            if (!traitement[i].check) {
             renderImportant += '<p><span>'+traitement[i].titleTask+'</span><input data-idtask="'+traitement[i].idTask+'" type="checkbox" name=""></p>'
           }
+        }
 
           $('.expsoonGroup > .contentGroup').html(renderImportant);
         })
   }
+
 
 
 
