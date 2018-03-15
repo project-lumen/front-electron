@@ -194,7 +194,7 @@ displayTaskMain()
               var task = "<ul>"
               for (var i = 0; i < traitement.task.length; i++) {
                 if (!traitement.task[i].check) {
-                  task += '<li>'+ traitement.task[i].titleTask+'<span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
+                  task += '<li><p>'+ traitement.task[i].titleTask+'</p><span><input data-idtask="'+traitement.task[i].idTask+'" type="checkbox" name="check"></span></li>'
                 }
               }
               task += "</ul>"
@@ -562,7 +562,7 @@ function updateTask(){
         dataType : 'html'
         }).done(function(data) {
           var traitement = JSON.parse(data)
-          var name = "<h6>" + traitement.nameList + "</h6>"
+          var name = traitement.nameList
           var task = "<ul>"
           for (var i = 0; i < traitement.task.length; i++) {
             if (!traitement.task[i].check) {
