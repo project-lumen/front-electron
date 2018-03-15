@@ -75,8 +75,32 @@ $('body').on('click','.content_List', function() {
       $(".footerList").toggleClass('openAddTask closeAddTask'); // Switch entre les deux class
   })
 
+  // OUVRE Menu UPDATE TASK
+  $('body').on('click', '.content_List .task li', function() {
 
 
+    if ($('[data-win="sideRightTask"]').hasClass('hidden')) {
+      $('[data-win="sideRightTask"]').toggleClass('fc hidden'); // Switch entre les deux class
+    }
+      $(".contentSideRightTask").toggleClass('closed_SBRT open_SBRT'); // Switch entre les deux class
+
+      var idtask = $(this).find('span > input').attr('data-idtask');
+      var nameTask = $(this).find('li').prevObject[0].textContent;
+
+
+      var renderUpTask = '<h6 data-idTask="'+ idtask+'">'+nameTask+'</h6>'
+
+
+    $('.UpdateTask .title ').html(renderUpTask);
+
+  })
+    // Ferme menu de modification de tache si on clic en dehors de sa div
+    $('body').on('click','.UpdateTask .title', function() {
+
+      if ($(".contentSideRightTask").hasClass('open_SBRT')) {
+        $(".contentSideRightTask").toggleClass('open_SBRT closed_SBRT'); // Switch entre les deux class
+      }
+    })
 
 
 
