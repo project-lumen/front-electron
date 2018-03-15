@@ -9,16 +9,12 @@
     <link rel="stylesheet" href="assets/css/master.css">
     <link rel="stylesheet" href="assets/css/page.css">
 
-
     <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat" rel="stylesheet">
-
-
-
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
   </head>
   <body>
 
-  <!-- LOGIN -->
+<!-- LOGIN -->
   <section data-win="login" class="fc ">
     <div class="animation"></div>
 
@@ -34,12 +30,11 @@
           <label for="remember">remember :</label>
           <input id="isRememberCheck" type="checkbox" name="remember" value="remember">
         </div>
-
       </div>
       <div class="redirectRegister">
         <p>Pas encore inscrit ? c'est par <a id="btnRegister" href="#">ici</a> :)</p>
       </div>
-  </div>
+    </div>
 
     <div class="gestionErreur hidden"></div>
   </section>
@@ -67,85 +62,52 @@
     <div class="gestionErreur hidden"></div>
   </section>
 
-  <!-- MAIN APP -->
+<!-- HOME -->
   <section data-win="main" class="hidden">
     <div class="content_main">
 
       <div class="importantGroup">
         <h2>Important</h2>
         <div class="contentGroup">
-          <p>
-            <span>Faire les courses</span>
-            <input type="checkbox" name="" value="">
-          </p>
-
-          <p>
-            <span>Finir l'application</span>
-            <input type="checkbox" name="" value="">
-          </p>
-
-          <p>
-            <span>Faire un joli CSS</span>
-            <input type="checkbox" name="" value="">
-          </p>
-
-          <p>
-            <span>Acheter a l'avenir des petites canettes de redbull ! </span>
-            <input type="checkbox" name="" value="">
-          </p>
-
+          <!-- JS -->
         </div>
       </div>
-
-
       <div class="todayGroup">
         <h2>Today</h2>
         <div class="contentGroup">
-          <p> Tache A </p>
+          <!-- JS -->
         </div>
       </div>
-
       <div class="expsoonGroup">
         <h2>Expire soon</h2>
         <div class="contentGroup">
-          <p> Tache A </p>
-          <p> Tache A </p>
-          <p> Tache A </p>
+          <!-- JS -->
         </div>
       </div>
 
     </div>
   </section>
-<!-- FIN  REGISTER -->
 
-
-<!-- DEBUT  SELECT LIST -->
-
-<section data-win="selectList" class="hidden">
-  <div class="headerList">
-    <h6> Une liste </h6>
-    <div class="iconDots">
+<!-- LISTE SELECTIONNEE -->
+  <section data-win="selectList" class="hidden">
+    <div class="headerList">
+      <h6><!--JS--></h6>
+      <div class="iconDots"></div>
     </div>
-  </div>
-  <div class="content_List">
-    <div class="task">
-      <ul>
-        <li>Tache un</li>
-        <li>Tache un</li>
-        <li>Tache un</li>
-        <li>Tache un</li>
-        <li>Tache un</li>
-      </ul>
-    </div>
-
-  </div>
-  <div class="footerList closeAddTask">
-    <div class="addTask">
-      <div class="header_addTaske ">
-        <h6> ADD NEW TASK </h6>
+    <div class="content_List">
+      <div class="task">
+        <ul>
+          <!-- JS -->
+        </ul>
       </div>
-      <div class="formAddTask">
+    </div>
 
+    <div class="footerList closeAddTask">
+      <div class="addTask">
+        <div class="header_addTaske ">
+          <h6> ADD NEW TASK </h6>
+        </div>
+        <div class="formAddTask">
           <label for="nameTask">Nom de la tache :</label>
           <input data-newTask="name" type="text" name="nameTask" value="" placeholder="Saisir une nouvelle tache">
 
@@ -154,147 +116,151 @@
             <input data-newTask="important" type="checkbox" name="important" value="" placeholder="">
           </div>
 
+          <div class="blockDate">
+            <div class="block1 fc">
+              <label for="startdate">Date de debut :</label>
+              <input data-newTask="startdate" type="date" name="startdate" value="" placeholder="">
+            </div>
 
-
-        <div class="blockDate">
-          <div class="block1 fc">
-            <label for="startdate">Date de debut :</label>
-            <input data-newTask="startdate" type="date" name="startdate" value="" placeholder="">
+            <div class="block2 fc">
+              <label for="endDate">Date de fin :</label>
+              <input data-newTask="endDate" type="date" name="endDate" value="" placeholder="">
+            </div>
           </div>
-
-          <div class="block2 fc">
-            <label for="endDate">Date de fin :</label>
-            <input data-newTask="endDate" type="date" name="endDate" value="" placeholder="">
-          </div>
-
-
+          <input data-newTask="submit" type="button" name="submit" value="Envoyer">
         </div>
-
-
-
-
-        <input data-newTask="submit" type="button" name="submit" value="Envoyer">
       </div>
     </div>
-  </div>
+  </section>
 
-</section>
-
-
-
-<!-- SIDE RIGHT -->
-
-<section data-win='sideRight'class="hidden">
-  <div class="contentSideRight closed_SBR">
-
-    <div class="addUsers">
-      <div class="title">
-        <h6> ADD USERS <h6>
-      </div>
-      <div class="formAddUser">
-        <div class="form">
-          <label for="startdate">Code user : </label>
+<!-- *** SIDEBAR RIGHT *** -->
+  <!-- MENU OPTION LISTE -->
+  <section data-win='sideRight'class="hidden">
+    <div class="contentSideRight closed_SBR">
+      <div class="addUsers">
+        <div class="title">
+          <h6> ADD USERS <h6>
+        </div>
+        <div class="formAddUser">
+          <div class="form">
+            <label for="startdate">Code user : </label>
             <input data-add="code" type="text" name="startdate" value="" placeholder="">
             <input data-add="submit" type="button" name="submit" value="Ajouter">
-        </div>
-        <div class="msg_errors">
-
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="archiveList">
-      <div class="title">
-        <h6> ARCHIVES </h6>
-      </div>
-      <div class="archiveListContent">
-        <div class="contentArchive">
-          <ul>
-            <li>Tache terminé</li>
-            <li>Tache terminé</li>
-            <li>Tache terminé</li>
-            <li>Tache terminé</li>
-            <li>Tache terminé</li>
-            <li>Tache terminé</li>
-          </ul>
+          </div>
+          <div class="msg_errors"></div>
         </div>
       </div>
-    </div>
 
-    <div class="optionList">
-      <div class="title">
-        <h6> OPTION LIST </h6>
-      </div>
-      <div class="contentOptionList">
-        <span>Supprimer la liste</span>
-      </div>
-
-    </div>
-
-
-
-
-  </div>
-
-
-</section>
-
-
-
-
-
-<!-- MENU DASHBOARD SIDE LEFT -->
-<section data-win='menuSide'class="hidden">
-  <div class="sideM closed">
-    <div class="btnSide"></div>
-    <div class="content_menu fc">
-      <div class="textimg nospeak"><!--JS --></div>
-      <div class="pictureUsers">
-        <h6>UNKNOW</h6> <!-- Par  default -->
-      </div>
-      <div class="codeUser">
-        <div class="contentCodeUSer">
-          <p>Code User : </p>
-          <span><!--A remplir JS --></span>
+      <div class="archiveList">
+        <div class="title">
+          <h6> ARCHIVES </h6>
         </div>
-        <div class="btnHome"></div>
-        <div class="btnRefresh"></div>
-
-      </div>
-      <div class="userList">
-        <div class="contentList">
-      </div>
-      <div class="Addnew formClosed">
-        <div class="header">
-          <span> ADD LIST </span>
-        </div>
-      <div class="form">
-        <label for="newlist">Nom de liste :</label>
-          <input data-newlist="name" type="text" name="newlist" value="" placeholder="Saisir la nouvelle liste">
-          <input data-newlist="submit" type="button" name="submit" value="Envoyer">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-    <!-- OPTION -->
-    <div class="setup"></div>
-      <div class="userConfig configClose">
-        <div class="header">
-          <h6> option </h6>
-          <div class="iconBack">
+        <div class="archiveListContent">
+          <div class="contentArchive">
+            <ul>
+            <!--JS-->
+            </ul>
           </div>
         </div>
-        <div class="content_userConfig">
-          <button class="btn_logOut" type="button" name="btn_logOut"><span>Log out </span></button>
+      </div>
+
+      <div class="optionList">
+        <div class="title">
+          <h6> OPTION LIST </h6>
+        </div>
+        <div class="contentOptionList">
+          <span>Supprimer la liste</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- MENU MODIFY TASK -->
+  <section data-win='sideRightTask'class="hidden">
+    <div class="contentSideRightTask closed_SBRT">
+      <div class="UpdateTask">
+        <div class="title">
+          <h6> <!-- TITLE TASK --><h6>
+        </div>
+        <div class="formUpdateTask">
+          <div class="form">
+            <label for="upTaskName">Modifier le nom de la tache :</label>
+            <input data-upTask="name" type="text" name="upTaskName" value="" placeholder="Modifer la tache">
+
+            <div class="upTaskImportant">
+              <label for="important">Important :</label>
+              <input data-upTask="important" type="checkbox" name="upTaskImportant" value="" placeholder="">
+            </div>
+
+            <div class="blockDateUpdate">
+              <div class="block1 fc">
+                <label for="upStartdate">Date de debut :</label>
+                <input data-upTask="startdate" type="date" name="upStartdate" value="" placeholder="">
+              </div>
+
+              <div class="block2 fc">
+                <label for="upEndDate">Date de fin :</label>
+                <input data-upTask="endDate" type="date" name="upEndDate" value="" placeholder="">
+              </div>
+          </div>
+          <input data-upTask="submit" type="submit" name="" value="update">
+
+          <div class="msg_errors"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- *** SIDEBAR LEFT *** -->
+<!-- MENU DASHBOARD -->
+  <section data-win='menuSide'class="hidden">
+    <div class="sideM closed">
+      <div class="btnSide"></div>
+      <div class="content_menu fc">
+        <div class="textimg nospeak"><!--JS --></div>
+        <div class="pictureUsers">
+          <h6>UNKNOW</h6> <!-- Par  default -->
+        </div>
+        <div class="codeUser">
+          <div class="contentCodeUSer">
+            <p>Code User : </p>
+            <span><!--A remplir JS --></span>
+          </div>
+          <div class="btnHome"></div>
+          <div class="btnRefresh"></div>
+
+        </div>
+        <div class="userList">
+          <div class="contentList"></div>
+        <div class="Addnew formClosed">
+          <div class="header">
+            <span> ADD LIST </span>
+          </div>
+        <div class="form">
+          <label for="newlist">Nom de liste :</label>
+            <input data-newlist="name" type="text" name="newlist" value="" placeholder="Saisir la nouvelle liste">
+            <input data-newlist="submit" type="button" name="submit" value="Envoyer">
+          </div>
         </div>
       </div>
     </div>
 
-</section>
+
+      <!-- OPTION -->
+      <div class="setup"></div>
+        <div class="userConfig configClose">
+          <div class="header">
+            <h6> option </h6>
+            <div class="iconBack">
+            </div>
+          </div>
+          <div class="content_userConfig">
+            <button class="btn_logOut" type="button" name="btn_logOut"><span>Log out </span></button>
+          </div>
+        </div>
+      </div>
+
+  </section>
 
 
 
