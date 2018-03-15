@@ -76,7 +76,7 @@ $('body').on('click','.content_List', function() {
   })
 
   // OUVRE Menu UPDATE TASK
-  $('body').on('click', '.content_List .task li', function() {
+  $('body').on('click', '.content_List .task li > p', function() {
 
 
     if ($('[data-win="sideRightTask"]').hasClass('hidden')) {
