@@ -24,6 +24,8 @@ function createWindow () {
            resizable: false,
            fullscreen: false,
            titleBarStyle: 'hidden',
+           frame : false,
+           
          })
 
   // and load the index.html of the app.
